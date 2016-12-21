@@ -11,14 +11,14 @@ This repository is for the Edge Microgateway Labs.
      * Ubuntu installed in Oracle Virtual Box VM
      * Cygwin
 
-### Lab 0
+### [Lab 0](https://github.com/swilliams11/edgemicro-labs/tree/master/lab0)
 
-Lab 0 Setup Edge Microgateway aware proxy.  
+Setup Edge Microgateway aware proxy.  
 
-### Lab 1
+### [Lab 1](https://github.com/swilliams11/edgemicro-labs/tree/master/lab1)
 
-Lab 1 Install, configure and start Edge Microgateway
+Install, configure and start Edge Microgateway.  
 
 ### Lab 2
 
-Lab 2 Reload Edge Microgateway
+Lab 2 Reload Edge Microgateway.
