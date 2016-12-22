@@ -5,7 +5,7 @@ This repository is for the Edge Microgateway Labs.
 ### Prerequisites
 1. Install [Node.js](https://nodejs.org/en/) LTS version.
 2. Setup an [Edge](https://accounts2.apigee.com/accounts/sign_up) account.  
-3. Linux Based environment
+3. Linux Based environment is recommended.
    * Mac OS
    * Windows
      * Ubuntu installed in Oracle Virtual Box VM

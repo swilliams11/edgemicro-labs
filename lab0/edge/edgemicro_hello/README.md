@@ -1,4 +1,4 @@
-# edgemicro_cloudfoundry
+# edgemicro_hello proxy
 
 The directory `/apiproxy` contains a sample API proxy for the edgemicro proxy.
 
@@ -17,11 +17,7 @@ To deploy, run `./deploy.sh`
 
 To test, run `./invoke.sh`
 
-### Get help
-
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
-
-Copyright © 2014, 2015 Apigee Corporation
+### License
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy

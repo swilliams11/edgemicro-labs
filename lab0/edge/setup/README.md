@@ -1,4 +1,4 @@
-# Edgemicro Setup
+# Setup Edge Microgateway aware proxy
 
 This directory provides scripts that configure your local environment and deploy a sample Edge Microgateway proxy to your organization on the Apigee API Platform.
 
@@ -31,11 +31,10 @@ Alternatively, you can invoke the proxies from the command line. To do so, cd to
 
 ### Ask the community
 
-[![alt text](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
+[![Edge Community](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ---
 
-Copyright © 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 this file except in compliance with the License. You may obtain a copy
