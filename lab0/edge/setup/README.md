@@ -25,9 +25,8 @@ Make sure you have the following installed and available on your PATH (recogniza
 
 6. The script prompts you to provision the API product, App and developer. Type `yes` to deploy these to your Edge organization and environment.  Follow the command prompts.
 
-You can now go to the Apigee management UI and see the deployed proxy.
+You can now go to the Apigee management UI and see the deployed proxy, developer, developer app and product.
 
-Alternatively, you can invoke the proxies from the command line. To do so, cd to the `/edgemicro_hello` directory, which contains an `deploy.sh` file.
 
 ### Ask the community
 
