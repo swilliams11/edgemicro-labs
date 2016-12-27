@@ -19,6 +19,6 @@ Setup Edge Microgateway aware proxy.
 
 Install, configure and start Edge Microgateway.  
 
-### Lab 2
+### [Lab 2](https://github.com/swilliams11/edgemicro-labs/tree/master/lab2)
 
-Lab 2 Reload Edge Microgateway.
+Lab 2 Enable Spike Arrest
