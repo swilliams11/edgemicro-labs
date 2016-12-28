@@ -1,4 +1,7 @@
-# Lab 2 - Include the Spike Arrest plugin
+# Lab 3 - Quota
+
+### Prerequisites
+If you completed Lab 0, then you will already have the Edgemicro Product created with a quota configured for 10 requests every minute.  
 
 ### 1. cd to the .edgemicro folder
 
@@ -10,19 +13,8 @@ cd ~/.edgemicro
 ### 2. Update Edgemicro Config
 Open the `org-env-config.yaml` file and make the following changes.
 
-#### a. Add the `- spikearrest` plugin to the sequence section
-When you add the spike arrest plugin to the sequence, then Edge Microgateway invokes plugins in the order listed in the sequence section.  In this case the `oauth` plugin will execute first, then the `spikearrest` plugin will execute.
-
-
-#### b. Add the `spikearrest:` section
-Configure the spike arrest plugin as shown below.  
-* 30 requests per minute with a buffer size of 0.
-
-The per minute interval is converted to a per second interval.
-
-60sec/30rpm = 2 second interval
-
-Hence, Edgemicro will only allow 1 request every 2 seconds.  
+#### a. Add the `- quota` plugin to the sequence section
+When you add the spike arrest plugin to the sequence, then Edge Microgateway invokes plugins in the order listed in the sequence section.  In this case the `oauth` plugin will execute first, then `spikearrest` and finally the `quota` plugin will execute.
 
 ```
 plugins:    
@@ -30,14 +22,12 @@ plugins:
     sequence:       
         - oauth
         - spikearrest
-spikearrest:
-  timeUnit: minute
-  allow: 30
-  bufferSize: 0
+        - quota
 ```
 
 ### 3. Reload the Microgateway
 You can reload the Microgateway or wait for the auto-reload.  The default config reload time is 600 seconds (10 minutes).
+
 ```
 edgemicro reload -o apigee_org -e env -k key -s secret
 ```
@@ -64,7 +54,7 @@ http://localhost:8000/hello -v
 ```
 
 
-Send two requests or more within two seconds and you should see the `503` status code along with the following error message.
+Send 10 requests within 1 minute and you should see the `403` status code along with the following error message.
 ```
-{"error": "spike arrest policy violated"}
+{"error": "exceeded quota"}
 ```
