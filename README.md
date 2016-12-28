@@ -26,3 +26,7 @@ Enable Spike Arrest
 ### [Lab 3](https://github.com/swilliams11/edgemicro-labs/tree/master/lab3)
 
 Enable Quota
+
+### [Lab 4](https://github.com/swilliams11/edgemicro-labs/tree/master/lab4)
+
+Analytics
