@@ -1,5 +1,5 @@
 {
-  "apiResources" : [ "/**" ],
+  "apiResources" : [ "/**", "/hello" ],
   "approvalType" : "auto",
   "attributes" : [ ],
   "description" : "Edgemicro product for the Cloud Foundry Edgemicro-decorator",

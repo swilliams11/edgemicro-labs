@@ -49,7 +49,7 @@ edgemicro start -o apigee_org -e env -k key -s secret --port 8030
 Send the request below to see the Microgateway respond with a 401 Unauthorized error.  
 
 ```
-curl http://localhost:8000/hello/ -i
+curl http://localhost:8000/edgemicro_lab/hello/ -i
 ```
 
 
@@ -69,5 +69,5 @@ Send request with the access token.
 ```
 curl -X GET \
 -H "Authorization: Bearer qOoFoQ4hFQ" \
-http://localhost:8000/hello -v
+http://localhost:8000/edgemicro_lab/hello -v
 ```

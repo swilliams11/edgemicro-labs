@@ -60,7 +60,7 @@ Send request with the access token.
 ```
 curl -X GET \
 -H "Authorization: Bearer qOoFoQ4hFQ" \
-http://localhost:8000/hello -v
+http://localhost:8000/edgemicro_lab/hello -v
 ```
 
 

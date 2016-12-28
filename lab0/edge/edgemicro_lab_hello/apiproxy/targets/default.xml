@@ -13,6 +13,6 @@
     <Flows/>
     <HTTPTargetConnection>
         <Properties/>
-        <URL>http://localhost:8090/hello</URL>
+        <URL>http://localhost:8090</URL>
     </HTTPTargetConnection>
 </TargetEndpoint>

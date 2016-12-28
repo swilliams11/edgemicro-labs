@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <APIProxy revision="1" name="edgemicro_hello">
-    <Basepaths>/edgemicro_hello</Basepaths>
+    <Basepaths>/edgemicro_lab_hello</Basepaths>
     <ConfigurationVersion majorVersion="4" minorVersion="0"/>
     <CreatedAt>1480706426371</CreatedAt>
     <CreatedBy>user@email.com</CreatedBy>
     <Description></Description>
-    <DisplayName>edgemicro_hello</DisplayName>
+    <DisplayName>edgemicro_lab_hello</DisplayName>
     <LastModifiedAt>1480713330961</LastModifiedAt>
     <LastModifiedBy>user@email.com</LastModifiedBy>
     <Policies/>
