@@ -20,9 +20,16 @@
 
 org="org"
 username="orgadmin"
-url="https://api.enterprise.apigee.com"
 env="env"
+#public cloud customers
+url="https://api.enterprise.apigee.com"
 api_domain="apigee.net"
+
+
+#private cloud customers
+#url="http://192.168.56.101:8080"
+#api_domain=""
+
 
 ## Do not change the settings below
 ## --------------------------------------

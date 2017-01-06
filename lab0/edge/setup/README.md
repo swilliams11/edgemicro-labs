@@ -17,9 +17,9 @@ Make sure you have the following installed and available on your PATH (recogniza
 
 2. In the file `setenv.sh`, configure values for your organization, username, environment.
 
-3. Deploy the `edgemicro_hello` proxy. Run `deploy.sh` from the `./setup` directory.
+3. Deploy the `edgemicro_lab_hello` proxy. Run `deploy.sh` from the `./setup` directory.
 
-4. When prompted, enter `edgemicro_hello`
+4. When prompted, enter `edgemicro_lab_hello`
 
 5. Enter your org admin password when prompted.  
 
@@ -27,10 +27,6 @@ Make sure you have the following installed and available on your PATH (recogniza
 
 You can now go to the Apigee management UI and see the deployed proxy, developer, developer app and product.
 
-
-### Ask the community
-
-[![Edge Community](../images/apigee-community.png "Apigee Community is a great place to ask questions and find answers about developing API proxies. ")](https://community.apigee.com?via=github)
 
 ---
 

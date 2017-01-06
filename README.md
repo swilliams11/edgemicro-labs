@@ -30,3 +30,15 @@ Enable Quota
 ### [Lab 4](https://github.com/swilliams11/edgemicro-labs/tree/master/lab4)
 
 Analytics
+
+### [Lab 5](http://docs.apigee.com/microgateway/latest/develop-custom-plugins#writeasimpleplugin)
+
+Custom Plugin
+
+### [Lab 6](https://github.com/swilliams11/edgemicro-labs/tree/master/lab6)
+
+Log File
+
+### [Lab 7](https://github.com/swilliams11/edgemicro-labs/tree/master/lab7)
+
+Debugging

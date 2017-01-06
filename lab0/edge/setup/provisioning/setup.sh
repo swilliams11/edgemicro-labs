@@ -2,9 +2,15 @@
 
 source ../setenv.sh
 
-echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
+password=""
 
-read -s password
+if [ -z "$1" ]
+then
+  echo "Enter your password for the Apigee Enterprise organization, followed by [ENTER]:"
+  read -s password
+else
+  password=$1
+fi
 
 echo using $username and $org
 
@@ -45,3 +51,4 @@ key=`curl -u $username:$password -H "Accept: application/json"\
      | grep consumerKey | awk -F '\"' '{ print $4 }'`
 
 echo "Consumer key for joe-app is ${key}\n"
+password=""

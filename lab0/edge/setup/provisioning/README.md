@@ -17,15 +17,10 @@ organization, username, environment.
 
 4. Enter your org admin password when prompted.
 
-5. Enter `edgemicro_cloudfoundry` when prompted to enter the proxies to attach to the API product.
+5. Enter `edgemicro_lab_hello` when prompted to enter the proxies to attach to the API product.
 
 
-# Get help
-
-For assistance, post to the Apigee Developer Forum:
-
-http://support.apigee.com
-
+---
 Copyright 2013 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use

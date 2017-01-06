@@ -7,8 +7,8 @@ read provision
 if [ -z $provision ] || [ "$provision" = "yes" ]; then
         cd provisioning
 	echo "Clearing old data"
-	sh ./cleanup.sh
-	sh ./setup.sh $1
+	sh ./cleanup.sh $2
+	sh ./setup.sh $1 $2
 	cd -
 else
 	echo "Make sure you provision the Api Product and Developer, before testing"

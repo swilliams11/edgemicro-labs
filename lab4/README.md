@@ -53,3 +53,7 @@ curl -X GET \
 -H "Authorization: Bearer qOoFoQ4hFQ" \
 http://localhost:8000/edgemicro_lab/hello -v
 ```
+
+In about 15 minutes you should be able to see the analytics data flowing through Microgateway in the Edge UI.  
+
+![Edge UI Analytics](/screenshots/analytics.png?raw=true "Edge UI Analytics")

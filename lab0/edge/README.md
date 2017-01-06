@@ -1,6 +1,6 @@
-# edgemicro_hello proxy
+# edgemicro_lab_hello proxy
 
-The directory `/edgemicro_hello` contains the required sample API proxy.
+The directory `/edgemicro_lab_hello` contains the required sample API proxy.
 
 # Configure
 
@@ -8,19 +8,16 @@ In order to deploy this proxy, you need to create a developer, an app, and an AP
 
 1. Update `/setup/setenv.sh` with your organization name and email address.
 
-3. Deploy the `edgemicro_hello` proxy. Run `deploy.sh` from the `./setup` directory.
+3. Deploy the `edgemicro_lab_hello` proxy. Run `deploy.sh` from the `./setup` directory.
 
-4. When prompted, enter `edgemicro_hello`
+4. When prompted, enter `edgemicro_lab_hello`
 
 5. Enter your org admin password when prompted. The script will deploy the proxy to the organization and environment specified in the `setenv.sh` file.
 
 6. The script prompts you to provision the API product, App and developer. Type `yes` to deploy these to your Edge organization and environment.  Follow the command prompts.
 
 
-### Get help
-
-For assistance, please use [Apigee Support](https://community.apigee.com/content/apigee-customer-support).
-
+---
 Copyright © 2014, 2015 Apigee Corporation
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
