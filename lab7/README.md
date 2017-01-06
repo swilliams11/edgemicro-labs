@@ -2,12 +2,11 @@
 In lab 5 you created a custom plugin.  In this lab you will add some debugging statements to that plugin so that they are printed to the console when you include the `DEBUG=plugin:response-override` statement when you start Microgateway.
 
 ### 1. Update the response-override plugin
-Copy the plugin (`response-override`) folder from this repository to the Microgateway plugins directory on your local machine.
-i.e. `/usr/local/lib/node_modules/edgemicro/plugins`
+Copy the plugin (`response-override`) folder from this repository to the Microgateway plugins directory on your local machine (i.e. `/usr/local/lib/node_modules/edgemicro/plugins`).
 
 The `response-override` folder is located in the `lab7` folder.
 
-Note: that the `package.json` file was also updated, so you should replace both the `index.js` and the `package.json` files.  
+Note that the `package.json` file was also updated, so you should replace both the `index.js` and the `package.json` files.  
 
 ### 2. Restart the Microgateway
 Stop the Microgateway with `Ctrl + c`
@@ -22,8 +21,7 @@ The `DEBUG=plugin:response-override` tells Node.js that it should only capture `
 
 
 ### 3. Send Requests to Microgateway
-Generate a couple of different requests:
-* valid requests
+Send some valid requests. 
 
 #### Access Token Request
 ```

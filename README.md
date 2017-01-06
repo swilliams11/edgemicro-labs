@@ -21,24 +21,24 @@ Install, configure and start Edge Microgateway.
 
 ### [Lab 2](https://github.com/swilliams11/edgemicro-labs/tree/master/lab2)
 
-Enable Spike Arrest
+Enable the spike arrest plugin.
 
 ### [Lab 3](https://github.com/swilliams11/edgemicro-labs/tree/master/lab3)
 
-Enable Quota
+Enable the quota plugin.
 
 ### [Lab 4](https://github.com/swilliams11/edgemicro-labs/tree/master/lab4)
 
-Analytics
+Update the analytics configuration.
 
 ### [Lab 5](http://docs.apigee.com/microgateway/latest/develop-custom-plugins#writeasimpleplugin)
 
-Custom Plugin
+Create a custom plugin.
 
 ### [Lab 6](https://github.com/swilliams11/edgemicro-labs/tree/master/lab6)
 
-Log File
+Review the log file that Microgateway generates.
 
 ### [Lab 7](https://github.com/swilliams11/edgemicro-labs/tree/master/lab7)
 
-Debugging
+Update the custom plugin to include debug statements.  
