@@ -1,0 +1,21 @@
+{
+  "name": "edgemicro_hello",
+  "version": "0.0.0",
+  "description": "edgemicro hello target",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "authors": [
+    "Sean Williams"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/swilliams11/edgemicro-labs",
+  "dependencies": {
+    "bcryptjs": "^0.7.12",
+    "express": "^3.5.0",
+    "https": "latest",
+    "fs":"latest"
+  }
+}

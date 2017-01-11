@@ -1,0 +1,191 @@
+# Lab 9 - Southbound Two-Way-TLS
+For the target servers that require higher level of security, Microgateway can be configured with Two-Way-TLS.  This lab describes how to configure it.  Full Two-Way-TLS configuration is located [here](http://docs.apigee.com/microgateway/latest/operation-and-configuration-reference-edge-microgateway#usingclientssltlsoptions)
+
+
+### 0. Make sure OpenSSL is installed
+(OpenSSL)[https://www.openssl.org/]
+
+
+## Setup Certificate of Authority
+Skip this section.  All the certificates have already be created.  
+Source: https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
+
+### 1. Create a certificate of authority to sign certificates
+You don't have to perform these steps; I already completed them and the certificates are stored in the `keys/ca/server` and  `keys/ca/client` folders.
+
+#### a. create the root private key
+```
+cd lab9/ca
+mkdir certs crl newcerts private
+chmod 700 private
+touch index.txt
+echo 1000 > serial
+openssl genrsa -aes256 -out private/ca-key.pem 2048
+chmod 400 private/ca-key.pem
+```
+
+#### b. create the root certificate
+```
+openssl req -config ca.cnf \
+      -key private/ca-key.pem \
+      -new -x509 -days 9999 -sha256 -extensions v3_ca \
+      -out certs/ca-cert.pem
+chmod 444 certs/ca-cert.pem
+```
+
+#### c. verify the root certificate
+```
+openssl x509 -noout -text -in certs/ca-cert.pem
+```
+
+---
+
+#### a. create the CA all in one go
+```
+cd lab9/ca
+openssl req -new -x509 -days 9999 -config ca_local.cnf -keyout private/ca-key.pem -out ca-crt.pem
+```
+
+### 2. Create the certificate chain
+The certificate change includes the root certificate and it would also include any intermediate certificates.
+
+```
+cd lab9/ca
+mkdir intermediate/certs
+cat certs/ca-cert.pem > intermediate/certs/ca-chain-cert.pem
+chmod 444 intermediate/certs/ca-chain-cert.pem
+```
+
+### 3. Create a self-signed public certificate and a private key for the Node.js targetserver
+You don't have to execute this step; I already created the private key and public certificate and saved them in the `keys/server` folder.
+
+* generate the key
+```
+cd lab9/keys
+openssl genrsa -aes256 -out server/server-key.pem 2048
+chmod 400 server/server-key.pem
+```
+
+* generate the CSR
+```
+openssl req -config server/server.cnf \
+     -key server/server-key.pem \
+     -new -sha256 -out server/server-csr.pem
+```
+
+* sign the CSR and encrypt it
+```
+openssl ca -config ca.cnf -extensions server_cert -days 999 -passin "pass:password" \
+-md sha256 -in server/server-csr.pem \
+-out server/server-crt.pem
+```
+
+OR
+
+* sign the CSR and do not encrypt it
+```
+openssl ca -config ca.cnf -extensions server_cert -days 999 -passin "pass:password" \
+-in server/server-csr.pem \
+-out server/server-crt.pem
+```
+
+---
+
+This section follows a slightly different approach to creating a server certificate.
+
+* generate a private key for the server.
+```
+openssl genrsa -out server-key.pem 2048
+```
+
+* generate a CSR
+```
+openssl req -new -config server.cnf -key server-key.pem -out server-csr.pem
+```
+
+* sign the CSR with password
+
+```
+openssl x509 -req -extfile server.cnf -days 999 -passin "pass:password" -in server-csr.pem -CA ca/ca-crt.pem -CAkey ../ca/ca-key.pem -CAcreateserial -out server-crt.pem
+```
+
+
+---
+* generate the certificate directly without a CSR
+```
+openssl req -new -x509 -sha256 -newkey rsa:2048 -nodes \
+    -keyout twoway_private.pem -days 9999 -out twoway_mycert.cert
+```
+
+You will be prompted for the following:
+* Country code
+* State
+* Locality
+* Organization
+* Organizational unit
+* Common Name (FQDN) -> apigee1609.net
+* email address
+
+
+### 4. Convert to pk12 format
+
+---
+I already created the pfx cert and stored it in the `keys` folder.
+```
+openssl pkcs12 -export -in twoway_mycert.cert -inkey twoway_private.pem -out cert.pfx
+```
+
+If it prompts for a password then leave it blank and click the `enter` key.
+
+
+### 5. Create the client certificate
+
+
+The client will use this certificate to present to the Node.js server.  
+```
+openssl req -new -x509 -sha256 -newkey rsa:2048 -nodes \
+    -keyout client_private.pem -days 9999 -out client_cert.cert
+```
+
+### 4. Update the Microgateway config file
+Open the Microgateway config file located in `~/.edgemicro/org-env-config.yaml`
+
+Add the `targets` section as shown below.
+```
+targets:
+   #host: 'myserver.example.com' #optional
+   tls:
+     client:
+       pfx: <path to certificate>/cert.pfx
+       passphrase:
+       rejectUnauthorized: true
+```
+
+### 5. Start the target server with TLS
+```
+cd lab9/edgemicro_target_tls
+node index.js
+```
+
+
+
+### 3. Restart Microgateway
+Manually restart the Microgateway to load the configuration changes. (i.e `Ctrl + C` then `edgemicro start ...`)
+
+
+### 4. Send Requests to Microgateway
+Generate a couple of different requests:
+* valid requests
+
+
+#### Access Token Request
+```
+curl -X POST -H "Content-type: application/json" http://org-env.apigee.net/edgemicro-auth/token -d '{"client_id":"client_id","client_secret":"client_secret","grant_type":"client_credentials"}' -v
+```
+
+#### Valid request
+The `-k` turns off curl's certificate validation.  We have to turn this off because we are using a self-signed certificate.  
+
+```
+curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab/hello -i -k
+```
