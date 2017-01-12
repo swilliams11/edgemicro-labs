@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<App name="joe-app">
+<App name="joe-app-ssl">
     <CallbackUrl>http://joe.app/login</CallbackUrl>
     <AccessType>read</AccessType>
     <Attributes>
       <Attribute>
           <Name>DisplayName</Name>
-          <Value>Josiah's Edgemicro App</Value>
+          <Value>Josiah's Edgemicro App SSL</Value>
       </Attribute>
     </Attributes>
 </App>

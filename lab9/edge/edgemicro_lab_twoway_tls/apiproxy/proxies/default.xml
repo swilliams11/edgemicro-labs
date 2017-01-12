@@ -12,10 +12,10 @@
     </PostFlow>
     <Flows/>
     <HTTPProxyConnection>
-        <BasePath>/edgemicro_lab_twoway_tls</BasePath>
+        <BasePath>/edgemicro_lab_ssl</BasePath>
         <Properties/>
         <VirtualHost>default</VirtualHost>
-        <VirtualHost>secure</VirtualHost>
+        <!--VirtualHost>secure</VirtualHost-->
     </HTTPProxyConnection>
     <RouteRule name="default">
         <TargetEndpoint>default</TargetEndpoint>

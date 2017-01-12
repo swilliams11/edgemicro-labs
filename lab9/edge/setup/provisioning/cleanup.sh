@@ -16,7 +16,7 @@ echo using $username and $org
 
 echo "Deleting Apps"
 
-curl -u $username:$password $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app -X DELETE
+curl -u $username:$password $url/v1/o/$org/developers/joe@weathersample.com/apps/joe-app-ssl -X DELETE
 
 echo "Deleting Developers"
 
@@ -24,7 +24,7 @@ curl -u $username:$password $url/v1/o/$org/developers/joe@weathersample.com -X D
 
 echo "Deleting Products"
 
-curl -u $username:$password $url/v1/o/$org/apiproducts/EdgemicroProduct -X DELETE
+curl -u $username:$password $url/v1/o/$org/apiproducts/EdgemicroProductSSL -X DELETE
 
 echo "\nCleanup Completed\n"
 password=""

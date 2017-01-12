@@ -8,7 +8,7 @@ For the target servers that require higher level of security, Microgateway can b
 
 ## Setup Certificate of Authority and all of the certificates
 Skip this section.  All the certificates have already be created.  
-Go to [Lab 9 start](#lab-9---start-here)
+Go to [Lab 9 start](#lab-9-start-here)
 Source: https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
 
 ### 1. Create a certificate of authority to sign certificates
@@ -157,7 +157,7 @@ cd lab9
 openssl pkcs12 -info -in keys/client/client-crt.pfx
 ```
 
-## LAB 9 - START HERE
+## LAB 9 START HERE
 Start here for Lab 9.
 
 ### 1. Update the Microgateway config file
@@ -174,6 +174,11 @@ targets:
 ```
 
 ### 2. Restart Microgateway
+* set the following environment variable
+```
+NODE_TLS_REJECT_UNAUTHORIZED = "0"
+```
+
 Manually restart the Microgateway to load the configuration changes. (i.e `Ctrl + C` then `edgemicro start ...`)
 
 
@@ -182,6 +187,12 @@ Manually restart the Microgateway to load the configuration changes. (i.e `Ctrl 
 ```
 cd lab9/edgemicro_target_tls
 node index.js
+```
+
+You can validate the target server will accept an SSL connection with the following commands.
+```
+openssl s_client -connect localhost:9443 -tls1 -servername localhost:9443
+openssl s_client -connect localhost:9443 -ssl3 -servername localhost:9443
 ```
 
 ### 4. Send requests to target server
@@ -255,18 +266,27 @@ curl -X POST -H "Content-type: application/json" http://org-env.apigee.net/edgem
 ```
 
 #### Valid request
-The `-k` turns off curl's certificate validation.  We have to turn this off because we are using a self-signed certificate.  
+The `-k` turns off curl's certificate validation.  We have to turn this off because we are using a self-signed certificate.
 
 ```
-curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab/hello-two -i -k
+curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hello -i -k
 ```
+
+##### Valid request
+This request should also work but it does not. That is the directory to my CA's public certificate.
+
+```
+cd lab9
+curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hello -i --cacert keys/ca/certs/ca-cert.pem
+```
+
 
 
 ## TODO
 When I issue this command I get the following error.  Troubleshoot why.
 
 ```
-curl -v -s --cert keys/client/client-crt.pfx:password --key keys/client/client-key.pem "https://localhost:9443/hello-two"
+curl -v -s --cert keys/client/client-crt.pfx:password --key keys/client/client-key.pem "https://localhost:9443/hello"
 ```
 
 ```

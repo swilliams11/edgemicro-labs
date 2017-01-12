@@ -21,6 +21,6 @@ apiproxy=`echo $value | sed -e 's/ //g' | sed -e 's/,/","/g'`
 
 echo "Filling the ProxyDetail in ApiProduct"
 
-TMP_FILE=`mktemp /tmp/config.XXXXXXXXXX`
+TMP_FILE=`mktemp /tmp/config2.XXXXXXXXXX`
 sed -e "s/PROXY/\"$apiproxy\"/" EdgemicroProduct.json > $TMP_FILE
 mv $TMP_FILE EdgemicroProduct.json
