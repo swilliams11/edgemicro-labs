@@ -16,6 +16,7 @@
     "bcryptjs": "^0.7.12",
     "express": "^3.5.0",
     "https": "latest",
+    "tls":"latest",
     "fs":"latest"
   }
 }
