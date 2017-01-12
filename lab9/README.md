@@ -8,6 +8,7 @@ For the target servers that require higher level of security, Microgateway can b
 
 ## Setup Certificate of Authority and all of the certificates
 Skip this section.  All the certificates have already be created.  
+Go to [Lab 9 start](#lab-9---start-here)
 Source: https://jamielinux.com/docs/openssl-certificate-authority/introduction.html
 
 ### 1. Create a certificate of authority to sign certificates
