@@ -46,7 +46,3 @@ Update the custom plugin to include debug statements.
 ### [Lab 8](https://github.com/swilliams11/edgemicro-labs/tree/master/lab8)
 
 Setup TLS for northbound traffic.
-
-### [Lab 9](https://github.com/swilliams11/edgemicro-labs/tree/master/lab9)
-
-Setup Two-Way-TLS for southbound traffic.
