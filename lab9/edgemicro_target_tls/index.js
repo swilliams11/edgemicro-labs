@@ -10,8 +10,9 @@ var options = {
     //ca:     fs.readFileSync('../keys/client_cert.cert'), //this is the client Certificate
     key:    fs.readFileSync('../keys/server/server-key.pem', 'utf8'),
     cert:   fs.readFileSync('../keys/server/server-crt.pem', 'utf8'),
+    ca:     [fs.readFileSync('../keys/ca/certs/ca-cert.pem', 'utf8')], //public certificate to ROOT CA
     //ca:     fs.readFileSync('../keys/ca/intermediate/certs/ca-chain-cert.pem'), //this is the client Certificate
-    ca:     [fs.readFileSync('../keys/client/client-crt.pem'),fs.readFileSync('../keys/client/client-crt.pfx'),fs.readFileSync('../keys/ca/certs/ca-cert.pem')], //public certificate to ROOT CA
+    //ca:     [fs.readFileSync('../keys/client/client-crt.pem'),fs.readFileSync('../keys/client/client-crt.pfx'),fs.readFileSync('../keys/ca/certs/ca-cert.pem')], //public certificate to ROOT CA
     passphrase: 'test',
     requestCert:        true, // tells node that client must present certificate as well
     rejectUnauthorized: false // tell node that it should reject the request if cert is not presented
@@ -30,20 +31,20 @@ var options = {
 app.get('/hello-two', function(req, res){
   if (req.client.authorized) {
       console.log("authorized request :");
-      console.log("host:" + req.hostname || req.ip + req.originalUrl);
+      //console.log("host:" + req.hostname || req.ip + req.originalUrl);
       res.writeHead(200, {"Content-Type": "application/json"});
       res.end('{"status":"approved"}');
   } else {
       console.log("unauthorized request :");
       console.log("host:" + req.hostname || req.ip + req.originalUrl);
       console.log(req);
-      console.log(JSON.stringify(req));
+      //console.log(JSON.stringify(req));
       res.writeHead(401, {"Content-Type": "application/json"});
       res.end('{"status":"invalid certificate presented - access denied"}');
   }
   //res.send({"hello": "world"});
 });
-
+debugger;
 httpsServer = https.createServer(options, app);
 
 //===============PORT=================

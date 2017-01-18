@@ -1,4 +1,7 @@
-# Lab 9 - Southbound Two-Way-TLS - IN PROGRESS
+# Lab 9 - Southbound Two-Way-TLS - ON HOLD
+This lab is on hold.  It is not complete and is not behave as expected.  Do not complete this lab.
+---
+
 For the target servers that require higher level of security, Microgateway can be configured with Two-Way-TLS.  This lab describes how to configure it.  Full Two-Way-TLS configuration is located [here](http://docs.apigee.com/microgateway/latest/operation-and-configuration-reference-edge-microgateway#usingclientssltlsoptions)
 
 
@@ -48,7 +51,7 @@ openssl req -new -x509 -days 9999 -config ca_local.cnf -keyout private/ca-key.pe
 ```
 
 ### 2. Create the certificate chain
-The certificate change includes the root certificate and it would also include any intermediate certificates.
+The certificate chain includes the root certificate and it would also include any intermediate certificates.
 
 ```
 cd lab9/ca
@@ -169,9 +172,25 @@ targets:
    - tls:
        client:
          pfx: <path to certificate>/client-cert.pfx
-         passphrase:
+         passphrase: test
          rejectUnauthorized: true
 ```
+
+---
+SSL configuration is
+
+```
+targets:
+  - ssl:
+      client:
+        key: <path to certificate>/edgemicro-labs/lab9/keys/client/client-key.pem
+        cert: <path to certificate>/edgemicro-labs/lab9/keys/client/client-crt.pem
+        ca: <path to certificate>/edgemicro-labs/lab9/keys/ca/certs/ca-cert.pem
+        passphrase: test
+        rejectUnauthorized: false
+        secureProtocol: TLSv1_method
+```
+
 
 ### 2. Restart Microgateway
 * set the following environment variable
@@ -269,7 +288,7 @@ curl -X POST -H "Content-type: application/json" http://org-env.apigee.net/edgem
 The `-k` turns off curl's certificate validation.  We have to turn this off because we are using a self-signed certificate.
 
 ```
-curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hello -i -k
+curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hello-two -i -k
 ```
 
 ##### Valid request
@@ -277,7 +296,7 @@ This request should also work but it does not. That is the directory to my CA's 
 
 ```
 cd lab9
-curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hello -i --cacert keys/ca/certs/ca-cert.pem
+curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hello-two -i --cacert keys/ca/certs/ca-cert.pem
 ```
 
 
@@ -286,7 +305,7 @@ curl -i -H "Authorization: token " https://localhost:8000/edgemicro_lab_ssl/hell
 When I issue this command I get the following error.  Troubleshoot why.
 
 ```
-curl -v -s --cert keys/client/client-crt.pfx:password --key keys/client/client-key.pem "https://localhost:9443/hello"
+curl -v -s --cert keys/client/client-crt.pfx:password --key keys/client/client-key.pem "https://localhost:9443/hello-two"
 ```
 
 ```
