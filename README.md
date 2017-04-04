@@ -31,7 +31,7 @@ Enable the quota plugin.
 
 Update the analytics configuration.
 
-### [Lab 5](http://docs.apigee.com/microgateway/latest/develop-custom-plugins#writeasimpleplugin)
+### [Lab 5](https://github.com/swilliams11/edgemicro-labs/tree/master/lab5)
 
 Create a custom plugin.
 
